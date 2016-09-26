@@ -48,16 +48,13 @@ class MatthuffyPaypal {
 	
 	protected $environment;
 	
-	public function agreementURL($agreementSucess, $agreementCancelled) {
-  		$this->agreementSucess = $agreementSucess;
-		$this->agreementCancelled = $agreementCancelled;
 
- 	}
-	public function setPPcreds($clientId, $clientSecret, $environment) {
+	public function setPPcreds($clientId, $clientSecret, $environment, $agreementSucess, $agreementCancelled) {
   		$this->clientId = $clientId;
 		$this->clientSecret = $clientSecret;
 		$this->environment = $environment;
-
+		$this->agreementSucess = $agreementSucess;
+		$this->agreementCancelled = $agreementCancelled;
  	}
 	public function setRecurring($RecurringDetails) {
   		$this->RecurringDetails = $RecurringDetails;
