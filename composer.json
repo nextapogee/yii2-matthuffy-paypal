@@ -1,0 +1,32 @@
+{
+    "name": "matthuffy/yii2-matthough-paypal",
+    "description": "Paypal pro api hander",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matt Hough",
+            "email": "matt@adtelly.tv"
+        }
+    ],
+	"minimum-stability": "stable",
+    "repositories":[
+        {
+            "type": "git",
+            "url": "https://github.com/matthuffy/yii2-matthough-paypal.git"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*",
+		"paypal/rest-api-sdk-php": "*"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "matthuffy\\MatthoughPaypal\\": ""
+        }
+    }
+}
