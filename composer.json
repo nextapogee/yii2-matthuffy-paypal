@@ -1,5 +1,5 @@
 {
-    "name": "matthuffy/yii2-matthough-paypal",
+    "name": "matthuffy/yii2-matthuffy-paypal",
     "description": "Paypal pro api hander",
     "type": "yii2-extension",
     "keywords": ["yii2","extension"],
@@ -14,7 +14,7 @@
     "repositories":[
         {
             "type": "git",
-            "url": "https://github.com/matthuffy/yii2-matthough-paypal.git"
+            "url": "https://github.com/matthuffy/yii2-matthuffy-paypal.git"
         }
     ],
 
@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "matthuffy\\MatthoughPaypal\\": ""
+            "matthuffy\\MatthuffyPaypal\\": ""
         }
     }
 }
