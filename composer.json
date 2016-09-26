@@ -1,21 +1,24 @@
 {
     "name": "matthuffy/yii2-matthuffy-paypal",
-    "description": "yii2 paypal intergration",
+    "description": "Yii2 PayPal test",
+    "keywords": ["yii2", "extension", "form"],
+    "homepage": "https://github.com/Matthuffy/yii2-matthuffy-paypal",
     "type": "yii2-extension",
-    "license": "MIT",
+    "license": "BSD 3-Clause",
     "authors": [
         {
-            "name": "Matt Hough",
-            "email": "matt@adtelly.tv"
+            "name": "Matt Houigh",
+            "email": "matt@adtelly.tv",
+            "homepage": "http://www.adtelly.tv"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
-	"yiisoft/yii2": "*",
-	"paypal/rest-api-sdk-php": "*"
-		},
-	"autoload": {
+        "paypal/rest-api-sdk-php": "*"
+    },
+    "autoload": {
         "psr-4": {
             "matthuffy\\MatthuffyPaypal\\": ""
         }
+    }
 }
