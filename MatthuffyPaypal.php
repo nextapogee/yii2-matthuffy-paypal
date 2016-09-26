@@ -279,18 +279,18 @@ class MatthuffyPaypal {
 				$result = $payment->execute($execution, $apiContext);
 		
 				// NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
-				ResultPrinter::printResult("Executed Payment", "Payment", $payment->getId(), $execution, $result);
+				//ResultPrinter::printResult("Executed Payment", "Payment", $payment->getId(), $execution, $result);
 		
 				try {
 					$payment = Payment::get($paymentId, $apiContext);
 				} catch (Exception $ex) {
 					// NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
-					ResultPrinter::printError("Get Payment", "Payment", null, null, $ex);
+					//ResultPrinter::printError("Get Payment", "Payment", null, null, $ex);
 					exit(1);
 				}
 			} catch (Exception $ex) {
 				// NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
-				ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
+				//ResultPrinter::printError("Executed Payment", "Payment", null, null, $ex);
 				exit(1);
 			}
 		
