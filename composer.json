@@ -10,7 +10,6 @@
             "email": "matt@adtelly.tv"
         }
     ],
-	"minimum-stability": "stable",
     "repositories":[
         {
             "type": "git",
