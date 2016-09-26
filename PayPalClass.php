@@ -1,5 +1,5 @@
 <?php
-namespace matthuffy\MatthoughPaypal;
+namespace matthuffy\MatthuffyPaypal;
 
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
@@ -33,7 +33,7 @@ use PayPal\Api\PaymentExecution;
 date_default_timezone_set(@date_default_timezone_get());
 
 
-class MatthoughPaypal {
+class MatthuffyPaypal {
 	
 	#PayPal global creds
 	protected $clientId;
