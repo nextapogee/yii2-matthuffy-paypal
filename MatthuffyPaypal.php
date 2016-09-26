@@ -46,14 +46,17 @@ class MatthuffyPaypal {
 	protected $agreementSucess;
 	protected $agreementCancelled;
 	
+	protected $environment;
+	
 	public function agreementURL($agreementSucess, $agreementCancelled) {
   		$this->agreementSucess = $agreementSucess;
 		$this->agreementCancelled = $agreementCancelled;
 
  	}
-	public function setPPcreds($clientId, $clientSecret) {
+	public function setPPcreds($clientId, $clientSecret, $environment) {
   		$this->clientId = $clientId;
 		$this->clientSecret = $clientSecret;
+		$this->environment = $environment;
 
  	}
 	public function setRecurring($RecurringDetails) {
@@ -73,7 +76,7 @@ class MatthuffyPaypal {
 	
 		$apiContext->setConfig(
 			array(
-				'mode' => 'live',
+				'mode' => $this->environment,
 				'log.LogEnabled' => true,
 				'log.FileName' => 'PayPal.log',
 				'log.LogLevel' => 'DEBUG', // PLEASE USE `INFO` LEVEL FOR LOGGING IN LIVE ENVIRONMENTS
