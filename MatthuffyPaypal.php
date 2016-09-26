@@ -28,6 +28,8 @@ use PayPal\Api\PatchRequest;
 use PayPal\Common\PayPalModel;
 use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
+use PayPal\Api\Payout;
+use PayPal\Api\PayoutSenderBatchHeader;
 
 
 date_default_timezone_set(@date_default_timezone_get());
@@ -525,7 +527,7 @@ class MatthuffyPaypal {
 		// NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
 		 //echo "Create Payment using Saved Card", "Payment", $payment->getId(), $request, $payment;
 		
-		return $card;
+		return $payment;
 
 	}
 	public function UpdatePlan()
@@ -1108,6 +1110,59 @@ class MatthuffyPaypal {
 		//ResultPrinter::printResult("Reactivate the Agreement", "Agreement", $agreement->getId(), $suspendedAgreement, $agreement);
 		
 		return $agreement;
+
+	}
+	
+	public function singlepayout($subject, $note, $receiveremail, $value, $currency, $itemid)
+	{
+		$payouts = new \PayPal\Api\Payout();
+		
+		$clientSecret = $this->clientSecret;
+		$clientId = $this->clientId;
+		
+		#call the paypal api settings
+		$apiContext = $this->getApiContext($clientId,$clientSecret);
+		
+		$senderBatchHeader = new \PayPal\Api\PayoutSenderBatchHeader();
+		// ### NOTE:
+		// You can prevent duplicate batches from being processed. If you specify a `sender_batch_id` that was used in the last 30 days, the batch will not be processed. For items, you can specify a `sender_item_id`. If the value for the `sender_item_id` is a duplicate of a payout item that was processed in the last 30 days, the item will not be processed.
+		
+		// #### Batch Header Instance
+		$senderBatchHeader->setSenderBatchId(uniqid())
+			->setEmailSubject($subject);
+		
+		// #### Sender Item
+		// Please note that if you are using single payout with sync mode, you can only pass one Item in the request
+		$senderItem = new \PayPal\Api\PayoutItem();
+		$senderItem->setRecipientType('Email')
+			->setNote($note)
+			->setReceiver($receiveremail)
+			->setSenderItemId($itemid)
+			->setAmount(new \PayPal\Api\Currency('{
+								"value":"'.$value.'",
+								"currency":"'.$currency.'"
+							}'));
+		
+		$payouts->setSenderBatchHeader($senderBatchHeader)
+			->addItem($senderItem);
+		
+		
+		// For Sample Purposes Only.
+		$request = clone $payouts;
+		
+		// ### Create Payout
+		try {
+			$output = $payouts->createSynchronous($apiContext);
+		} catch (Exception $ex) {
+			// NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
+			//ResultPrinter::printError("Created Single Synchronous Payout", "Payout", null, $request, $ex);
+			exit(1);
+		}
+		
+		// NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
+		 //ResultPrinter::printResult("Created Single Synchronous Payout", "Payout", $output->getBatchHeader()->getPayoutBatchId(), $request, $output);
+		
+		return $output;
 
 	}
 }
