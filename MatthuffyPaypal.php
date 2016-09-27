@@ -1,6 +1,6 @@
 <?php
 namespace matthuffy\MatthuffyPaypal;
-
+use yii\helpers\Url;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -182,10 +182,10 @@ class MatthuffyPaypal {
 		// Set the urls that the buyer must be redirected to after 
 		// payment approval/ cancellation.
 		//$baseUrl = getBaseUrl();
-		$baseUrl = BASE_URL;
+		$baseUrl = Url::home(true);
 		$redirectUrls = new RedirectUrls();
-		$redirectUrls->setReturnUrl("$baseUrl/ExecutePayment.php?success=true")
-			->setCancelUrl("$baseUrl/ExecutePayment.php?success=false");
+		$redirectUrls->setReturnUrl("$baseUrl/check-out/executepayment.php?success=true")
+			->setCancelUrl("$baseUrl/check-out/ExecutePayment.php?success=false");
 		
 		// ### Payment
 		// A Payment Resource; create one using
