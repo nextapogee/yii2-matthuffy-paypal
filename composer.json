@@ -1,6 +1,6 @@
 {
     "name": "matthuffy/yii2-matthuffy-paypal",
-    "description": "Yii2 PayPal test",
+    "description": "Matthuffy PayPal Pro Intergration",
     "keywords": ["yii2", "extension", "form"],
     "homepage": "https://github.com/Matthuffy/yii2-matthuffy-paypal",
     "type": "yii2-extension",
